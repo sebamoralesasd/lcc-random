@@ -13,6 +13,25 @@ class DiscordBot
     # puts "This bot's invite URL is #{bot.invite_url}"
     # puts 'Click on it to invite it to your server.'
 
+    member_join
+    priv_mes
+    # This method call has to be put at the end of your script, it is what makes the bot actually connect to Discord. If you
+    # leave it out (try it!) the script will simply stop and the bot will not appear online.
+    @bot.run
+  end
+
+  private
+
+  def priv_mes
+    @bot.pm(contains: 'Sugerir') do |event|
+      nombre = @lcc.generate
+      user = event.author
+
+      user.pm("Hola #{user.mention}! El nombre sugerido para que uses en el server es #{nombre}. Salu2.")
+    end
+  end
+
+  def member_join
     @bot.member_join do |event|
       nombre = @lcc.generate
       user = event.user
@@ -23,9 +42,5 @@ class DiscordBot
 
       chan.send_message("Hola #{user.mention}! El nombre sugerido para que uses en el server es #{nombre}. Salu2.")
     end
-
-    # This method call has to be put at the end of your script, it is what makes the bot actually connect to Discord. If you
-    # leave it out (try it!) the script will simply stop and the bot will not appear online.
-    @bot.run
   end
 end

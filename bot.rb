@@ -27,7 +27,7 @@ class DiscordBot
       nombre = @lcc.generate
       user = event.author
 
-      user.pm("Hola #{user.mention}! El nombre sugerido para que uses en el server es #{nombre}. Salu2.")
+      user.pm("Hola! El nombre sugerido para que uses en el server es #{nombre}. Salu2.")
     end
   end
 

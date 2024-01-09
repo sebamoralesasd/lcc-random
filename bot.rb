@@ -23,7 +23,7 @@ class DiscordBot
   private
 
   def priv_mes
-    @bot.pm(contains: 'Sugerir') do |event|
+    @bot.pm(contains: /Sugerir/i) do |event|
       nombre = @lcc.generate
       user = event.author
 

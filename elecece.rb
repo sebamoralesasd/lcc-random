@@ -11,7 +11,14 @@ class Elecece
     selected_noun = nouns.sample
 
     # Formatea y devuelve el string
-    "Licenciado en #{selected_verb.capitalize} #{selected_noun.capitalize}"
+    pair = "#{selected_verb.capitalize} #{selected_noun.capitalize}"
+    long_version = "Licenciado en #{pair}"
+    return long_version unless long_version.length > 32
+
+    short_version = "Lic. en #{pair}"
+    return short_version unless short_version.length > 32
+
+    generate
   end
 
   private
